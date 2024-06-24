@@ -13,7 +13,7 @@ const getInfo = async (event) => {
         city_name.innerText = "Please write the name of the city";
         data_hide.classList.add('data_hide')
     } else {
-        const urlCordinates = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(cityVal)}&key=99e4a9845e49450b935e79e80d65d136`;
+        const urlCordinates = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(cityVal)}&key=${OpenCageAPIkey}`;
 
         try {
             const response = await fetch(urlCordinates);
@@ -26,7 +26,7 @@ const getInfo = async (event) => {
                 let lat = location.lat;
                 let lon = location.lng;
 
-                const urlWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=cd3edcba2c006e0a686798394368a63b&units=metric`;
+                const urlWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherAPIKey}&units=metric`;
                 const response2 = await fetch(urlWeather);
                 if (!response2.ok) {
                     throw new Error('Network response was not ok ' + response2.statusText);
